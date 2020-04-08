@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Pioneer Receiver Interface</title>
+
+	<!-- This line stops Android Chrome from resizing all the fonts -->
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<!--<meta name="viewport" content="width=320, initial-scale=1"> -->
+
+	<!-- Load websockets script -->
+	<script src="socket.io/socket.io.js"></script>
+
+	<!-- Load style sheet -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="translations.js"></script>
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+	<!-- Front display -->
+	<div id="displayDiv">
+		<div class="display border">Front display</div>
+		<div class="border grid-container-display">
+			<div><button id="zone1PowerButton">POWER Zone 1</button></div>
+			<div class="wideDisplay" id="frontDisplay"></div>
+			<div><button id="zone2PowerButton">POWER Zone 2</button></div>
+		</div>
+	</div>
+
+	<!-- Zone 1 -->
+	<div class="zone1 border">Zone 1</div>
+	<div class="border margin">
+		<div class="margin">
+			<button id="zone1VolumeMinus5">VOL -2.5dB</button>
+			<button id="zone1VolumeMinus1">VOL -0.5dB</button>
+			<span id="zone1Volume"></span>
+			<progress id="zone1VolumeBar" max="185"></progress>
+			<button id="zone1VolumePlus1">VOL +0.5dB</button>
+			<button id="zone1VolumePlus5">VOL +2.5dB</button>
+			<button id="zone1MuteButton">MUTE</button>
+		</div>
+		<div>
+			Input : <span id="zone1InputSeletion"></span>
+		</div>
+	</div>
+
+
+	<!-- Zone 2 -->
+	<div class="zone2 border">Zone 2</div>
+	<div class="border margin">		
+		<div class="margin">
+			<button id="zone2VolumeMinus5">VOL -2.5dB</button>
+			<button id="zone2VolumeMinus1">VOL -0.5dB</button>
+			<span id="zone2Volume"></span>
+			<progress id="zone2VolumeBar" max="185">50</progress>
+			<button id="zone2VolumePlus1">VOL +0.5dB</button>
+			<button id="zone2VolumePlus5">VOL +2.5dB</button>
+			<button id="zone2MuteButton">MUTE</button>
+		</div>
+		<div>
+			Input : <span id="zone2InputSeletion"></span>
+		</div>
+	</div>
+
+
+	<!-- Other settings -->
+	<div class="otherSettings border">Other settings</div>
+	<div class="margin grid-container">
+		<div class="inline border">
+			<div>
+				Listening mode: <span id="listeningMode"></span>
+			</div>
+			<div>
+				<button id="optimum">Optimum</button>
+				<button id="direct">Direct</button>
+				<button id="other">Other</button>
+			</div>			
+<!--			<div>
+				Playing listening mode: <span id="playingListeningMode"></span>
+			</div>-->
+			<br>
+			<div>
+				Tone bypass: <span id="toneBypass"></span>
+			</div>
+			<div>
+				<button id="bassMinus1">BASS -</button>
+				Bass: <span id="bassStatus"></span>
+				<button id="bassPlus1">BASS +</button>
+			</div>
+			<div>
+				<button id="trebleMinus1">TREBLE -</button>
+				Treble: <span id="trebleStatus"></span>
+				<button id="treblePlus1">TREBLE +</button>
+			</div>
+		</div>
+
+		<div id="listeningOptions" class="inline border scrollable">
+		</div>
+	</div>
+
+	<!-- Tuner controls -->
+	<div class="tuner border">Tuner controls</div>
+	<div class="border margin">
+		<button id="freqMinus1">FREQ -</button> TFD
+		<span id="tunerFrequency"></span> ?FR request tuner frequency
+		<button id="freqMinus1">FREQ +</button> TFI
+		<button id="tunerBand">BAND</button> // am or fm TB
+		<span id="tunerPresets"></span> 0tp 1tp ... ?pr
+	</div>
+
+	<!-- Custom command -->
+  <div class="border margin">
+  	<div>
+  		Custom command <input type="text" id="cmd">
+  	</div>
+  	<div>
+    	Response : <span id="response"></span>
+    </div>
+  </div>
+</body>
+</html>
